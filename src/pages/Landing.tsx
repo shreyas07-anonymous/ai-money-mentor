@@ -62,25 +62,24 @@ export default function Landing() {
 
             <h1 className="font-display text-4xl md:text-6xl font-bold tracking-tight">
               Your Money,{" "}
-              <span className="text-gradient-gold">Optimized</span>
+              <span className="text-gradient-gold">Made Simple</span>
               <br />
               for India
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              AI-driven financial guidance based on Income Tax Act 1961, SEBI guidelines,
-              and RBI regulations. Built for every Indian — from ₹1.5L to ₹5Cr+ income.
+              No jargon. No confusion. Just clear, actionable advice to make your money work harder — whether you earn ₹15K or ₹5Cr a month.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4">
               <Button variant="hero" size="lg" asChild>
-                <Link to="/score">
-                  Get Your Health Score
+                <Link to="/onboarding">
+                  Check My Financial Health
                   <ArrowRight className="w-4 h-4 ml-1" />
                 </Link>
               </Button>
               <Button variant="hero-outline" size="lg" asChild>
-                <Link to="/tax">Optimize Your Taxes</Link>
+                <Link to="/tax">How Much Tax Can I Save?</Link>
               </Button>
             </div>
 
