@@ -7,15 +7,15 @@ const features = [
   {
     icon: TrendingUp,
     title: "Money Health Score",
-    description: "Get your financial fitness score across 8 key dimensions with AI-powered insights.",
-    path: "/score",
+    description: "Answer 15 simple questions. Get a personalized score across 11 dimensions with clear next steps.",
+    path: "/onboarding",
     color: "text-score-excellent",
     bgColor: "bg-score-excellent/10",
   },
   {
     icon: Calculator,
     title: "Tax Optimizer",
-    description: "Old vs New regime comparison for FY 2025-26. Find missed deductions instantly.",
+    description: "Old vs New regime — which saves you more? Find tax deductions you're missing, in plain English.",
     path: "/tax",
     color: "text-primary",
     bgColor: "bg-primary/10",
@@ -23,7 +23,7 @@ const features = [
   {
     icon: Flame,
     title: "FIRE Planner",
-    description: "Calculate your Financial Independence number and build a SIP roadmap to get there.",
+    description: "Find your 'freedom number' — how much you need to never depend on a salary again.",
     path: "/fire",
     color: "text-destructive",
     bgColor: "bg-destructive/10",
@@ -31,7 +31,7 @@ const features = [
   {
     icon: Heart,
     title: "Life Event Advisor",
-    description: "Smart financial advice for bonuses, marriage, babies, job changes and more.",
+    description: "Got a bonus? Getting married? Switching jobs? Get a clear action plan with zero confusion.",
     path: "/life-event",
     color: "text-teal",
     bgColor: "bg-teal/10",
@@ -40,7 +40,7 @@ const features = [
 
 const stats = [
   { value: "₹0–5Cr+", label: "All Income Levels" },
-  { value: "8", label: "Financial Dimensions" },
+  { value: "11", label: "Financial Dimensions" },
   { value: "100%", label: "India Compliant" },
 ];
 
@@ -62,25 +62,24 @@ export default function Landing() {
 
             <h1 className="font-display text-4xl md:text-6xl font-bold tracking-tight">
               Your Money,{" "}
-              <span className="text-gradient-gold">Optimized</span>
+              <span className="text-gradient-gold">Made Simple</span>
               <br />
               for India
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              AI-driven financial guidance based on Income Tax Act 1961, SEBI guidelines,
-              and RBI regulations. Built for every Indian — from ₹1.5L to ₹5Cr+ income.
+              No jargon. No confusion. Just clear, actionable advice to make your money work harder — whether you earn ₹15K or ₹5Cr a month.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4">
               <Button variant="hero" size="lg" asChild>
-                <Link to="/score">
-                  Get Your Health Score
+                <Link to="/onboarding">
+                  Check My Financial Health
                   <ArrowRight className="w-4 h-4 ml-1" />
                 </Link>
               </Button>
               <Button variant="hero-outline" size="lg" asChild>
-                <Link to="/tax">Optimize Your Taxes</Link>
+                <Link to="/tax">How Much Tax Can I Save?</Link>
               </Button>
             </div>
 
@@ -142,11 +141,11 @@ export default function Landing() {
             <IndianRupee className="w-8 h-8 text-primary" />
           </div>
           <h3 className="font-display text-xl font-semibold mb-2">
-            Built on Indian Financial Laws
+            Built on Real Indian Laws
           </h3>
           <p className="text-muted-foreground text-sm max-w-lg mx-auto">
-            Every recommendation is grounded in Income Tax Act 1961, SEBI guidelines, and RBI regulations.
-            No generic advice — only actionable, legally compliant strategies with real ₹ values.
+            Our advice is grounded in Income Tax Act 1961, SEBI guidelines, and RBI regulations.
+            For big decisions (selling property, large investments), please confirm with a CA or SEBI-registered advisor. We tell you what to look into, they help you execute.
           </p>
         </div>
       </section>
