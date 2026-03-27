@@ -31,7 +31,7 @@ const features = [
   {
     icon: Heart,
     title: "Life Event Advisor",
-    description: "Smart financial advice for bonuses, marriage, babies, job changes and more.",
+    description: "Got a bonus? Getting married? Switching jobs? Get a clear action plan with zero confusion.",
     path: "/life-event",
     color: "text-teal",
     bgColor: "bg-teal/10",
