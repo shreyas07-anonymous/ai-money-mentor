@@ -369,6 +369,8 @@ export default function LifeEventAdvisor() {
           </Card>
         </div>
       )}
+
+      <MentorChat />
     </div>
   );
 }
