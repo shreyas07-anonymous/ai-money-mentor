@@ -97,4 +97,4 @@ To scale **AI Money Mentor** within the Times Internet / Economic Times ecosyste
 
 **Developed by The Logic Layers**  
 *Shreyas Patankar / Aditya Thakur / Swaraj Shinde / Dheeraj Muwal | ET Gen Hackathon 2026*
-````
+
