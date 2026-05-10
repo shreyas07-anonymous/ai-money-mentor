@@ -347,6 +347,10 @@ export default function HealthScore() {
         </CardContent>
       </Card>
 
+      <div className="mb-6">
+        <AIInsightPanel mode="health" title="AI Health Analysis" />
+      </div>
+
       {/* Disclaimer */}
       <div className="text-center text-xs text-muted-foreground px-4 mb-8">
         <p>Our analysis gives you a head start — it's built on real Indian tax law and SEBI guidelines. But for big decisions, please confirm with a CA or SEBI-registered advisor.</p>
