@@ -360,7 +360,7 @@ export default function FirePlanner() {
             </CardContent>
           </Card>
 
-          <ETTrendingFIRE />
+          
         </div>
       )}
 
