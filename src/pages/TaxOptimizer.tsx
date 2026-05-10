@@ -498,6 +498,10 @@ export default function TaxOptimizer() {
         </div>
       )}
 
+      <div className="container mx-auto px-4 pb-8 max-w-3xl">
+        <AIInsightPanel mode="tax" title="AI Tax Strategy" />
+      </div>
+
       <MentorChat />
     </div>
   );
