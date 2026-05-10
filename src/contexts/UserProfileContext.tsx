@@ -124,13 +124,91 @@ interface ProfileContextType {
   isOnboarded: boolean;
   setOnboarded: (v: boolean) => void;
   getBracketLabel: () => string;
+  saveProfile: () => Promise<void>;
+  loadingProfile: boolean;
 }
 
 const ProfileContext = createContext<ProfileContextType | null>(null);
 
+function profileToRow(p: UserProfile, isOnboarded: boolean) {
+  return {
+    first_name: p.firstName,
+    employment_type: p.employmentType,
+    age: p.age || null,
+    city_type: p.cityType,
+    monthly_income: p.monthlyIncome || 0,
+    monthly_expenses: p.monthlyExpenses || 0,
+    retirement_age: p.retirementAge || 60,
+    current_behavior: p.currentBehavior,
+    biggest_mistake: p.biggestMistake,
+    is_onboarded: isOnboarded,
+    onboarding_data: {
+      expenseBreakdown: p.expenseBreakdown,
+      loans: p.loans,
+      safetyNets: p.safetyNets,
+      deductions: p.deductions,
+      worries: p.worries,
+      goals: p.goals,
+      portfolio: p.portfolio,
+      savingsRate: p.savingsRate,
+      incomeBracket: p.incomeBracket,
+    },
+  };
+}
+
+function rowToProfile(row: Record<string, unknown>): UserProfile {
+  const data = (row.onboarding_data || {}) as Record<string, unknown>;
+  const monthlyIncome = Number(row.monthly_income) || 0;
+  const monthlyExpenses = Number(row.monthly_expenses) || 0;
+  return {
+    firstName: (row.first_name as string) || "",
+    employmentType: (row.employment_type as string) || "",
+    age: Number(row.age) || 0,
+    cityType: (row.city_type as string) || "",
+    monthlyIncome,
+    monthlyExpenses,
+    retirementAge: Number(row.retirement_age) || 60,
+    currentBehavior: (row.current_behavior as string) || "",
+    biggestMistake: (row.biggest_mistake as string) || "",
+    expenseBreakdown: (data.expenseBreakdown as Record<string, number>) || {},
+    loans: (data.loans as LoanInfo) || { types: [], totalEMI: 0 },
+    safetyNets: (data.safetyNets as SafetyNets) || defaultProfile.safetyNets,
+    deductions: (data.deductions as Deductions) || defaultProfile.deductions,
+    worries: (data.worries as string[]) || [],
+    goals: (data.goals as GoalWithTimeline[]) || [],
+    portfolio: (data.portfolio as PortfolioItem[]) || [],
+    savingsRate: monthlyIncome > 0 ? Math.round(((monthlyIncome - monthlyExpenses) / monthlyIncome) * 100) : 0,
+    incomeBracket: getIncomeBracket(monthlyIncome),
+  };
+}
+
 export function UserProfileProvider({ children }: { children: ReactNode }) {
+  const { user } = useAuth();
   const [profile, setProfile] = useState<UserProfile>(defaultProfile);
   const [isOnboarded, setOnboarded] = useState(false);
+  const [loadingProfile, setLoadingProfile] = useState(false);
+
+  // Load profile when user changes
+  useEffect(() => {
+    if (!user) {
+      setProfile(defaultProfile);
+      setOnboarded(false);
+      return;
+    }
+    setLoadingProfile(true);
+    supabase
+      .from("profiles")
+      .select("*")
+      .eq("user_id", user.id)
+      .maybeSingle()
+      .then(({ data }) => {
+        if (data) {
+          setProfile(rowToProfile(data as Record<string, unknown>));
+          setOnboarded(Boolean(data.is_onboarded));
+        }
+        setLoadingProfile(false);
+      });
+  }, [user]);
 
   const updateProfile = (updates: Partial<UserProfile>) => {
     setProfile((prev) => {
@@ -150,10 +228,26 @@ export function UserProfileProvider({ children }: { children: ReactNode }) {
     setOnboarded(false);
   };
 
+  const saveProfile = async () => {
+    if (!user) return;
+    await supabase
+      .from("profiles")
+      .update(profileToRow(profile, isOnboarded))
+      .eq("user_id", user.id);
+  };
+
   return (
     <ProfileContext.Provider value={{
-      profile, updateProfile, resetProfile, isOnboarded, setOnboarded,
+      profile, updateProfile, resetProfile, isOnboarded,
+      setOnboarded: (v: boolean) => {
+        setOnboarded(v);
+        if (user) {
+          supabase.from("profiles").update(profileToRow(profile, v)).eq("user_id", user.id).then(() => {});
+        }
+      },
       getBracketLabel: () => getBracketLabel(profile.incomeBracket),
+      saveProfile,
+      loadingProfile,
     }}>
       {children}
     </ProfileContext.Provider>
