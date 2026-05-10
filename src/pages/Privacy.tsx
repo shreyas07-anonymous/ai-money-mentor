@@ -89,7 +89,7 @@ export default function Privacy() {
         </Button>
 
         <p className="text-center text-xs text-muted-foreground">
-          Powered by ET Intelligence
+          AI Money Mentor
         </p>
       </div>
     </div>
