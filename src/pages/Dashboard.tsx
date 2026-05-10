@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useUserProfile } from "@/contexts/UserProfileContext";
 import { Card, CardContent } from "@/components/ui/card";
-import { Calculator, Flame, Heart, TrendingUp, Shield, ExternalLink } from "lucide-react";
+import { Calculator, Flame, Heart, TrendingUp, Shield, Newspaper } from "lucide-react";
 import { formatINR } from "@/components/NumberInput";
 
 function getGrade(score: number) {
@@ -12,9 +12,7 @@ function getGrade(score: number) {
   return "F";
 }
 
-const ET_URL = "https://economictimes.indiatimes.com/?from=mdr";
-
-function getETNews(profile: ReturnType<typeof useUserProfile>["profile"]) {
+function getInsights(profile: ReturnType<typeof useUserProfile>["profile"]) {
   const news: { headline: string; impact: string; impactColor: string; tag: string }[] = [];
 
   if (profile.loans.types.includes("home")) {
@@ -44,7 +42,7 @@ function getETNews(profile: ReturnType<typeof useUserProfile>["profile"]) {
 export default function Dashboard() {
   const { profile } = useUserProfile();
   const name = profile.firstName || "Friend";
-  const etNews = getETNews(profile);
+  const insights = getInsights(profile);
 
   const savingsRate = profile.monthlyIncome > 0 ? Math.round(((profile.monthlyIncome - profile.monthlyExpenses) / profile.monthlyIncome) * 100) : 0;
   const quickScore = Math.min(100, Math.max(0, Math.round(savingsRate * 1.5 + 20)));
@@ -96,40 +94,30 @@ export default function Dashboard() {
         </Card>
       </div>
 
-      {/* ET News Feed */}
+      {/* Personalized Insights */}
       <div className="mb-6">
         <div className="flex items-center gap-2 mb-3">
-          <div className="w-5 h-5 rounded bg-[#E2621B] flex items-center justify-center">
-            <span className="text-white text-xs font-bold">ET</span>
-          </div>
-          <h2 className="font-display font-semibold text-sm">News filtered for your portfolio</h2>
+          <Newspaper className="w-4 h-4 text-primary" />
+          <h2 className="font-display font-semibold text-sm">Insights for your profile</h2>
         </div>
         <div className="space-y-3">
-          {etNews.map((news, i) => (
-            <a key={i} href={ET_URL} target="_blank" rel="noopener noreferrer">
-              <Card className="bg-gradient-card border-border/50 hover:border-[#E2621B]/30 transition-colors cursor-pointer mb-3">
-                <CardContent className="p-4">
-                  <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded bg-[#E2621B]/10 flex items-center justify-center shrink-0 mt-0.5">
-                      <span className="text-[#E2621B] text-xs font-bold">ET</span>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-foreground leading-snug">{news.headline}</p>
-                      <p className={`text-xs ${news.impactColor} mt-1 font-medium`}>{news.impact}</p>
-                      <div className="flex items-center justify-between mt-2">
-                        <span className="text-xs text-muted-foreground">{news.tag}</span>
-                        <span className="text-xs text-[#E2621B] flex items-center gap-1">
-                          Read on ET <ExternalLink className="w-3 h-3" />
-                        </span>
-                      </div>
-                    </div>
+          {insights.map((item, i) => (
+            <Card key={i} className="bg-gradient-card border-border/50 mb-3">
+              <CardContent className="p-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                    <TrendingUp className="w-3 h-3 text-primary" />
                   </div>
-                </CardContent>
-              </Card>
-            </a>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-medium text-foreground leading-snug">{item.headline}</p>
+                    <p className={`text-xs ${item.impactColor} mt-1 font-medium`}>{item.impact}</p>
+                    <span className="text-xs text-muted-foreground mt-2 block">{item.tag}</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
-        <p className="text-xs text-muted-foreground mt-2 text-center">Powered by ET Intelligence</p>
       </div>
 
       {/* Action Grid */}

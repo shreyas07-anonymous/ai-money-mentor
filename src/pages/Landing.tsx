@@ -55,12 +55,9 @@ export default function Landing() {
 
         <div className="container mx-auto px-4 py-24 md:py-32 relative">
           <div className="max-w-3xl mx-auto text-center space-y-6">
-            {/* ET Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#E2621B]/30 bg-[#E2621B]/5 text-sm font-medium">
-              <div className="w-5 h-5 rounded bg-[#E2621B] flex items-center justify-center">
-                <span className="text-white text-xs font-bold">ET</span>
-              </div>
-              <span className="text-foreground">Powered by ET Intelligence</span>
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/5 text-sm font-medium">
+              <span className="text-foreground">AI-Powered Financial Guidance</span>
             </div>
 
             <h1 className="font-display text-4xl md:text-6xl font-bold tracking-tight">
@@ -159,12 +156,7 @@ export default function Landing() {
       {/* Footer */}
       <footer className="border-t border-border/50 py-8">
         <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
-          <div className="flex items-center justify-center gap-2 mb-2">
-            <div className="w-5 h-5 rounded bg-[#E2621B] flex items-center justify-center">
-              <span className="text-white text-xs font-bold">ET</span>
-            </div>
-            <span>AI Money Mentor — Powered by ET Intelligence</span>
-          </div>
+          <div className="mb-2 font-display font-semibold text-foreground">AI Money Mentor</div>
           <p className="text-xs">Not financial advice. Consult a certified financial planner for personalized decisions.</p>
         </div>
       </footer>
