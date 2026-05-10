@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Flame, ArrowLeft, TrendingUp, ChevronDown, ChevronUp, Home, Minus, Plus, Settings } from "lucide-react";
 
 import MentorChat from "@/components/MentorChat";
+import { AIInsightPanel } from "@/components/AIInsightPanel";
 import { formatINR } from "@/components/NumberInput";
 
 function SliderWithButtons({ value, onChange, min, max, step: stepVal = 1, label, suffix = "" }: { value: number; onChange: (v: number) => void; min: number; max: number; step?: number; label: string; suffix?: string }) {
