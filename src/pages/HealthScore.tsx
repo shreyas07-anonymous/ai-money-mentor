@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle2, ArrowLeft, Home } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import MentorChat from "@/components/MentorChat";
+import { AIInsightPanel } from "@/components/AIInsightPanel";
 import { formatINR } from "@/components/NumberInput";
 
 /* ───── scoring logic ───── */
