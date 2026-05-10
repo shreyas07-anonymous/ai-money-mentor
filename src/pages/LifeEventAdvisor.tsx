@@ -340,6 +340,12 @@ export default function LifeEventAdvisor() {
               ))}
             </CardContent>
           </Card>
+
+          <AIInsightPanel
+            mode="life-event"
+            title="AI Personalized Plan"
+            context={{ event: selectedEvent, amount, location: locationChange }}
+          />
         </div>
       )}
 
