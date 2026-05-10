@@ -242,7 +242,7 @@ export function UserProfileProvider({ children }: { children: ReactNode }) {
       setOnboarded: (v: boolean) => {
         setOnboarded(v);
         if (user) {
-          supabase.from("profiles").update(profileToRow(profile, v)).eq("user_id", user.id).then(() => {});
+          supabase.from("profiles").update(profileToRow(profile, v) as never).eq("user_id", user.id).then(() => {});
         }
       },
       getBracketLabel: () => getBracketLabel(profile.incomeBracket),
