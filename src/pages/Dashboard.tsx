@@ -42,7 +42,7 @@ function getInsights(profile: ReturnType<typeof useUserProfile>["profile"]) {
 export default function Dashboard() {
   const { profile } = useUserProfile();
   const name = profile.firstName || "Friend";
-  const etNews = getETNews(profile);
+  const insights = getInsights(profile);
 
   const savingsRate = profile.monthlyIncome > 0 ? Math.round(((profile.monthlyIncome - profile.monthlyExpenses) / profile.monthlyIncome) * 100) : 0;
   const quickScore = Math.min(100, Math.max(0, Math.round(savingsRate * 1.5 + 20)));
