@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { TrendingUp, Calculator, Flame, Heart, ArrowRight, Shield, Brain, IndianRupee, Zap } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
 
 const features = [
   {
