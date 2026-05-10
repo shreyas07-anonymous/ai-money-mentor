@@ -46,6 +46,9 @@ const stats = [
 ];
 
 export default function Landing() {
+  const { user } = useAuth();
+  const quickPath = user ? "/quick-score" : "/auth";
+  const fullPath = user ? "/privacy" : "/auth";
   return (
     <div className="min-h-screen">
       {/* Hero */}
