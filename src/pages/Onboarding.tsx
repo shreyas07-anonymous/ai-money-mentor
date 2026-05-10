@@ -199,7 +199,7 @@ const emiChips = [
 /* ───── Main Component ───── */
 export default function Onboarding() {
   const navigate = useNavigate();
-  const { updateProfile, setOnboarded } = useUserProfile();
+  const { updateProfile, setOnboarded, saveProfile } = useUserProfile();
   const [step, setStep] = useState(0);
 
   // State for all 15 questions
