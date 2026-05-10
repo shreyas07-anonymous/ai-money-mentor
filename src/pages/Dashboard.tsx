@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useUserProfile } from "@/contexts/UserProfileContext";
 import { Card, CardContent } from "@/components/ui/card";
-import { Calculator, Flame, Heart, TrendingUp, Shield, ExternalLink } from "lucide-react";
+import { Calculator, Flame, Heart, TrendingUp, Shield, Newspaper } from "lucide-react";
 import { formatINR } from "@/components/NumberInput";
 
 function getGrade(score: number) {
@@ -12,9 +12,7 @@ function getGrade(score: number) {
   return "F";
 }
 
-const ET_URL = "https://economictimes.indiatimes.com/?from=mdr";
-
-function getETNews(profile: ReturnType<typeof useUserProfile>["profile"]) {
+function getInsights(profile: ReturnType<typeof useUserProfile>["profile"]) {
   const news: { headline: string; impact: string; impactColor: string; tag: string }[] = [];
 
   if (profile.loans.types.includes("home")) {
