@@ -1,7 +1,9 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { TrendingUp, Calculator, Flame, Heart, Menu, X, LayoutDashboard } from "lucide-react";
+import { TrendingUp, Calculator, Flame, Heart, Menu, X, LayoutDashboard, LogOut, LogIn } from "lucide-react";
 import { useState } from "react";
+import { useAuth } from "@/contexts/AuthContext";
+import { Button } from "@/components/ui/button";
 
 const navItems = [
   { path: "/", label: "Home", icon: null },
