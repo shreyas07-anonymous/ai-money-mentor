@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Flame, ArrowLeft, TrendingUp, ChevronDown, ChevronUp, Home, Minus, Plus, Settings } from "lucide-react";
-import { ETTrendingFIRE } from "@/components/ETTrending";
+
 import MentorChat from "@/components/MentorChat";
 import { formatINR } from "@/components/NumberInput";
 
