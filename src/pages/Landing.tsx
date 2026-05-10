@@ -77,13 +77,13 @@ export default function Landing() {
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4">
               <Button variant="hero" size="lg" asChild>
-                <Link to="/quick-score">
+                <Link to={quickPath}>
                   <Zap className="w-4 h-4 mr-1" />
                   Get My Score in 60 Seconds
                 </Link>
               </Button>
               <Button variant="hero-outline" size="lg" asChild>
-                <Link to="/privacy">
+                <Link to={fullPath}>
                   Full Analysis (15 questions)
                   <ArrowRight className="w-4 h-4 ml-1" />
                 </Link>
