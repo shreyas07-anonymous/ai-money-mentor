@@ -9,6 +9,7 @@ import { CheckCircle2, ArrowRight, ArrowLeft, Eye, EyeOff, Lightbulb, X, Home } 
 
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, ReferenceLine } from "recharts";
 import MentorChat from "@/components/MentorChat";
+import { AIInsightPanel } from "@/components/AIInsightPanel";
 import { formatINR } from "@/components/NumberInput";
 
 function taxEquivalent(amount: number): string {
