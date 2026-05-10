@@ -361,7 +361,7 @@ export default function FirePlanner() {
             </CardContent>
           </Card>
 
-          
+          <AIInsightPanel mode="fire" title="AI FIRE Coach" />
         </div>
       )}
 
