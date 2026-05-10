@@ -273,7 +273,7 @@ export default function Onboarding() {
     }
   };
 
-  const handleFinish = () => {
+  const handleFinish = async () => {
     const expBreakdown: Record<string, number> = {};
     for (const [k, v] of Object.entries(breakdown)) {
       if (v) expBreakdown[k] = parseFloat(v) || 0;
@@ -313,6 +313,8 @@ export default function Onboarding() {
       biggestMistake: mistake,
     });
     setOnboarded(true);
+    // Wait a tick so state updates flush, then persist
+    setTimeout(() => { saveProfile(); }, 100);
     navigate("/score");
   };
 
