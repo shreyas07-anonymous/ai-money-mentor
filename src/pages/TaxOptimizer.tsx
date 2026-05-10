@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { CheckCircle2, ArrowRight, ArrowLeft, Eye, EyeOff, Lightbulb, X, Home } from "lucide-react";
-import { ETTrendingTax } from "@/components/ETTrending";
+
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, ReferenceLine } from "recharts";
 import MentorChat from "@/components/MentorChat";
 import { formatINR } from "@/components/NumberInput";
