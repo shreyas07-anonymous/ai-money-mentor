@@ -232,7 +232,7 @@ export function UserProfileProvider({ children }: { children: ReactNode }) {
     if (!user) return;
     await supabase
       .from("profiles")
-      .update(profileToRow(profile, isOnboarded))
+      .update(profileToRow(profile, isOnboarded) as never)
       .eq("user_id", user.id);
   };
 
