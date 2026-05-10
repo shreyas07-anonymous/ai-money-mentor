@@ -9,6 +9,7 @@ import { CheckCircle2, ArrowRight, ArrowLeft, Eye, EyeOff, Lightbulb, X, Home } 
 
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, ReferenceLine } from "recharts";
 import MentorChat from "@/components/MentorChat";
+import { AIInsightPanel } from "@/components/AIInsightPanel";
 import { formatINR } from "@/components/NumberInput";
 
 function taxEquivalent(amount: number): string {
@@ -496,6 +497,10 @@ export default function TaxOptimizer() {
           </div>
         </div>
       )}
+
+      <div className="container mx-auto px-4 pb-8 max-w-3xl">
+        <AIInsightPanel mode="tax" title="AI Tax Strategy" />
+      </div>
 
       <MentorChat />
     </div>

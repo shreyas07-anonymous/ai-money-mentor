@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { TrendingUp, Calculator, Flame, Heart, ArrowRight, Shield, Brain, IndianRupee, Zap } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
 
 const features = [
   {
@@ -45,6 +46,9 @@ const stats = [
 ];
 
 export default function Landing() {
+  const { user } = useAuth();
+  const quickPath = user ? "/quick-score" : "/auth";
+  const fullPath = user ? "/privacy" : "/auth";
   return (
     <div className="min-h-screen">
       {/* Hero */}
@@ -73,13 +77,13 @@ export default function Landing() {
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4">
               <Button variant="hero" size="lg" asChild>
-                <Link to="/quick-score">
+                <Link to={quickPath}>
                   <Zap className="w-4 h-4 mr-1" />
                   Get My Score in 60 Seconds
                 </Link>
               </Button>
               <Button variant="hero-outline" size="lg" asChild>
-                <Link to="/privacy">
+                <Link to={fullPath}>
                   Full Analysis (15 questions)
                   <ArrowRight className="w-4 h-4 ml-1" />
                 </Link>

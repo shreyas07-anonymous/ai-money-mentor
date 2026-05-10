@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Heart, CheckCircle2, AlertTriangle, FileText, ArrowRight, ArrowLeft, Clock, Home } from "lucide-react";
 import MentorChat from "@/components/MentorChat";
+import { AIInsightPanel } from "@/components/AIInsightPanel";
 import NumberInput, { formatINR } from "@/components/NumberInput";
 
 const lifeEvents = [
@@ -339,6 +340,12 @@ export default function LifeEventAdvisor() {
               ))}
             </CardContent>
           </Card>
+
+          <AIInsightPanel
+            mode="life-event"
+            title="AI Personalized Plan"
+            context={{ event: selectedEvent, amount, location: locationChange }}
+          />
         </div>
       )}
 

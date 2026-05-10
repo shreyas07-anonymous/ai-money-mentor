@@ -1,7 +1,9 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { TrendingUp, Calculator, Flame, Heart, Menu, X, LayoutDashboard } from "lucide-react";
+import { TrendingUp, Calculator, Flame, Heart, Menu, X, LayoutDashboard, LogOut, LogIn } from "lucide-react";
 import { useState } from "react";
+import { useAuth } from "@/contexts/AuthContext";
+import { Button } from "@/components/ui/button";
 
 const navItems = [
   { path: "/", label: "Home", icon: null },
@@ -14,7 +16,14 @@ const navItems = [
 
 export function AppLayout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user, signOut } = useAuth();
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const handleSignOut = async () => {
+    await signOut();
+    navigate("/");
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -46,6 +55,15 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
                 {item.label}
               </Link>
             ))}
+            {user ? (
+              <Button variant="ghost" size="sm" onClick={handleSignOut} className="ml-2">
+                <LogOut className="w-4 h-4 mr-1" /> Sign out
+              </Button>
+            ) : (
+              <Button variant="ghost" size="sm" onClick={() => navigate("/auth")} className="ml-2">
+                <LogIn className="w-4 h-4 mr-1" /> Sign in
+              </Button>
+            )}
           </div>
 
           {/* Mobile toggle */}

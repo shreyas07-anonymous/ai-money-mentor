@@ -199,7 +199,7 @@ const emiChips = [
 /* ───── Main Component ───── */
 export default function Onboarding() {
   const navigate = useNavigate();
-  const { updateProfile, setOnboarded } = useUserProfile();
+  const { updateProfile, setOnboarded, saveProfile } = useUserProfile();
   const [step, setStep] = useState(0);
 
   // State for all 15 questions
@@ -273,7 +273,7 @@ export default function Onboarding() {
     }
   };
 
-  const handleFinish = () => {
+  const handleFinish = async () => {
     const expBreakdown: Record<string, number> = {};
     for (const [k, v] of Object.entries(breakdown)) {
       if (v) expBreakdown[k] = parseFloat(v) || 0;
@@ -313,6 +313,8 @@ export default function Onboarding() {
       biggestMistake: mistake,
     });
     setOnboarded(true);
+    // Wait a tick so state updates flush, then persist
+    setTimeout(() => { saveProfile(); }, 100);
     navigate("/score");
   };
 

@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle2, ArrowLeft, Home } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import MentorChat from "@/components/MentorChat";
+import { AIInsightPanel } from "@/components/AIInsightPanel";
 import { formatINR } from "@/components/NumberInput";
 
 /* ───── scoring logic ───── */
@@ -345,6 +346,10 @@ export default function HealthScore() {
           </p>
         </CardContent>
       </Card>
+
+      <div className="mb-6">
+        <AIInsightPanel mode="health" title="AI Health Analysis" />
+      </div>
 
       {/* Disclaimer */}
       <div className="text-center text-xs text-muted-foreground px-4 mb-8">
