@@ -136,7 +136,7 @@ Deno.serve(async (req) => {
       });
     }
 
-    const systemPrompt = systemPromptFor(mode, profile);
+    const systemPrompt = systemPromptFor(mode, profile, context);
 
     const aiMessages: Array<{ role: string; content: string }> = [
       { role: "system", content: systemPrompt },
